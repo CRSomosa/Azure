@@ -24,7 +24,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.PAT }}
+          password: ${{ secrets.GHCR_PAT }}
 
       - name: Lowercase Repo Name for Tagging
         run: echo "REPO=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
@@ -62,7 +62,8 @@ jobs:
               --resource-group ${{ env.AZURE_GROUP_NAME }} \
               --server ghcr.io \
               --username ${{ github.actor }} \
-              --password ${{ secrets.PAT }}
+              --password ${{ secrets.GHCR_PAT }}
+
 
             # Set environment variables for the app (update as needed)
             az containerapp update \
